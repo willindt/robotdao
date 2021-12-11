@@ -6,7 +6,7 @@ import { ReactComponent as StakeIcon } from "../../assets/icons/stake.svg";
 import { ReactComponent as BondIcon } from "../../assets/icons/bond.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
 import { ReactComponent as HectorIcon } from "../../assets/icons/logo_robo.svg";
-import { ReactComponent as PoolTogetherIcon } from "../../assets/icons/33-together.svg";
+import { ReactComponent as GlobeIcon } from "../../assets/icons/globe.svg";
 import { trim, shorten } from "../../helpers";
 import { useAddress, useWeb3Context } from "src/hooks/web3Context";
 import useBonds from "../../hooks/Bonds";
@@ -26,6 +26,9 @@ function NavContent() {
       return true;
     }
     if (currentPath.indexOf("stake") >= 0 && page === "stake") {
+      return true;
+    }
+    if (currentPath.indexOf("calculator") >= 0 && page === "calculator") {
       return true;
     }
     if ((currentPath.indexOf("bonds") >= 0 || currentPath.indexOf("choose_bond") >= 0) && page === "bonds") {
@@ -142,6 +145,20 @@ function NavContent() {
                   ))}
                 </div>
               </div>
+              <Link
+                component={NavLink}
+                id="calc-nav"
+                to="/calculator"
+                isActive={(match, location) => {
+                  return checkPage(match, location, "calculator");
+                }}
+                className={`button-dapp-menu ${isActive ? "active" : ""}`}
+              >
+                <Typography variant="h6">
+                  <SvgIcon color="primary" component={GlobeIcon} viewBox="0 0 24 24"/>
+                  Calculator
+                </Typography>
+              </Link>
             </div>
           </div>
         </div>
